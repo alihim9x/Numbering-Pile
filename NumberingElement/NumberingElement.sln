@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberingElement", "NumberingElement\NumberingElement.csproj", "{BFFBD22C-8381-46BA-B486-C89BC4134BCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFFBD22C-8381-46BA-B486-C89BC4134BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFBD22C-8381-46BA-B486-C89BC4134BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFBD22C-8381-46BA-B486-C89BC4134BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFBD22C-8381-46BA-B486-C89BC4134BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E2EB819B-8476-44C0-A7E8-0DC08C8305A7}
+	EndGlobalSection
+EndGlobal
