@@ -203,8 +203,19 @@ namespace SingleData
         //        return rebarCoverTypes;
         //    }
         //}
-        private List<Autodesk.Revit.DB.Category> categories;
-       
+        private List<Model.Entity.VerOrHor> verOrHors;
+        public virtual List<Model.Entity.VerOrHor> VerOrHors
+        {
+            get
+            {
+                if(verOrHors == null)
+                {
+                    verOrHors = new List<VerOrHor> { Model.Entity.VerOrHor.HorizontalX, Model.Entity.VerOrHor.VerticalY };
+                }
+                return verOrHors;
+            }
+        }
+        private List<Autodesk.Revit.DB.Category> categories;    
         public virtual List<Autodesk.Revit.DB.Category> Categories
         {
             get
@@ -212,8 +223,8 @@ namespace SingleData
                 if(categories == null)
                 {
                     categories = new List<Autodesk.Revit.DB.Category> {                    
-                    Autodesk.Revit.DB.Category.GetCategory(revitData.Document,Autodesk.Revit.DB.BuiltInCategory.OST_StructuralFoundation)};
-                    
+                    Autodesk.Revit.DB.Category.GetCategory(revitData.Document,Autodesk.Revit.DB.BuiltInCategory.OST_StructuralFoundation),
+                    Autodesk.Revit.DB.Category.GetCategory(revitData.Document,Autodesk.Revit.DB.BuiltInCategory.OST_StructuralFraming)};
                 }
                 return categories;
             }

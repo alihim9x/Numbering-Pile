@@ -57,6 +57,7 @@
     <Compile Include="Command\Command.cs" />
     <Compile Include="Constant\ConstantValue.cs" />
     <Compile Include="Model\Entity\AddParameterType.cs" />
+    <Compile Include="Model\Entity\VerOrHor.cs" />
     <Compile Include="Model\Entity\DefinitionGroupType.cs" />
     <Compile Include="Model\Entity\Pile.cs" />
     <Compile Include="Model\Entity\Element.cs" />

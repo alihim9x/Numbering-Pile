@@ -45,6 +45,13 @@ namespace Model.ViewModel
                 return ModelData.Instance.Parameters;
             }
         }
+        public List<Model.Entity.VerOrHor> VerOrHors
+        {
+            get
+            {
+                return ModelData.Instance.VerOrHors;
+            }
+        }
         
             
            

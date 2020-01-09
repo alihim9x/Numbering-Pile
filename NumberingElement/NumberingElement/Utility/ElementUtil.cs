@@ -73,31 +73,73 @@ namespace Utility
         }
         public static List<Model.Entity.Pile> GetIntersectEttPiles (this Model.Entity.Element ettElem)
         {
+            
             var setting = ModelData.Instance.Setting;
+            var settingCate = setting.Category.Id;
+            var verOrHorFraming = setting.VerOrHor;
             var distanceFromPile2Path = setting.DistanceFromPile2Path;
             List<Model.Entity.Pile> intersectEttPiles = new List<Model.Entity.Pile>();
             //var foundationCate = new Autodesk.Revit.DB.ElementCategoryFilter(BuiltInCategory.OST_StructuralFoundation);
-            var cate = new Autodesk.Revit.DB.ElementCategoryFilter(setting.Category.Id);
+            var cateFilter = new Autodesk.Revit.DB.ElementCategoryFilter(settingCate);
             var revitElem = ettElem.RevitElement;
             var bbRevitElem = revitElem.get_BoundingBox(null);
             var ol = new Autodesk.Revit.DB.Outline(bbRevitElem.Min, bbRevitElem.Max);
             var bbIntersectFilter = new Autodesk.Revit.DB.BoundingBoxIntersectsFilter(ol);
-            var intersectPiles = new FilteredElementCollector(revitData.Document).WherePasses(cate)
+            var intersectPiles = new FilteredElementCollector(revitData.Document).WherePasses(cateFilter)
                 .WherePasses(bbIntersectFilter).ToList();
             var curvePath = (revitElem.Location as LocationCurve).Curve;
+            XYZ itemPoint = null;
+            Curve curveFraming = null; 
             //revitData.Selection.SetElementIds(intersectPiles.Select(x => x.Id).ToList()); // Test Intersected Pile
             foreach (var item in intersectPiles)
             {
-                var itemPoint = (item.Location as LocationPoint).Point;
+                if(settingCate.IntegerValue == (int)BuiltInCategory.OST_StructuralFoundation)
+                {
+                    itemPoint = (item.Location as LocationPoint).Point;
+                    
+                }
+                else if(settingCate.IntegerValue == (int)BuiltInCategory.OST_StructuralFraming)
+                {
+                    curveFraming = (item.Location as LocationCurve).Curve;
+                    itemPoint = (curveFraming.GetEndPoint(0) + curveFraming.GetEndPoint(1)) / 2;                  
+                }
                 var intersectionResult = curvePath.Project(itemPoint);
                 var projection2curve = intersectionResult.XYZPoint;
                 double distance2P = itemPoint.Distance2P(projection2curve);
-                if(distance2P <distanceFromPile2Path.milimeter2Feet())
+                
+                if (distance2P < distanceFromPile2Path.milimeter2Feet())
                 {
-                    intersectEttPiles.Add(new Model.Entity.Pile { RevitElement = item });
-                    //revitData.Document.Create.NewDetailCurve(revitData.ActiveView, Line.CreateBound(projection2curve, itemPoint));
+                    switch (verOrHorFraming)
+                    {
+                        case Model.Entity.VerOrHor.HorizontalX:
+                            {
+                                if((curveFraming as Line).Direction.IsXOrY())
+                                {
+                                    intersectEttPiles.Add(new Model.Entity.Pile { RevitElement = item });
 
+                                }
+                                break;
+                            }
+                        case Model.Entity.VerOrHor.VerticalY:
+                            {
+                                if (!(curveFraming as Line).Direction.IsXOrY())
+                                {
+                                    intersectEttPiles.Add(new Model.Entity.Pile { RevitElement = item });
+                                }
+                                break;
+                            }
+                        default:
+                            {
+                                intersectEttPiles.Add(new Model.Entity.Pile { RevitElement = item });
+
+                                break;
+                            }
+
+                    }
+                    //intersectEttPiles.Add(new Model.Entity.Pile { RevitElement = item });
+                    //revitData.Document.Create.NewDetailCurve(revitData.ActiveView, Line.CreateBound(projection2curve, itemPoint));
                 }
+
 
             }
             //ettElem.IntersectEttPiles.ForEach(x => x.HostEttElement = ettElem);

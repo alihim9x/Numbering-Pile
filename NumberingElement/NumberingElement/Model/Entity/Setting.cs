@@ -40,6 +40,7 @@ namespace Model.Entity
             }
         }
         
+        
         public Model.Entity.Element EttElement { get; set; }
         public List<Model.Entity.Element> EttElements { get; set; } = new List<Element>();
         private double distanceFromPile2Path;
@@ -67,6 +68,20 @@ namespace Model.Entity
             {
                 if (parameter == value) return;
                 parameter = value;
+                OnPropertyChanged();
+            }
+        }
+        private VerOrHor verOrHor;
+        public VerOrHor VerOrHor
+        {
+            get
+            {
+                return verOrHor;
+            }
+            set
+            {
+                if (verOrHor == value) return;
+                verOrHor = value;
                 OnPropertyChanged();
             }
         }

@@ -52,7 +52,7 @@ namespace Utility
                 try
                 {
                     var elem = sel.PickObject(Autodesk.Revit.UI.Selection.ObjectType.Element, new SelectionUtil(filter, null)).GetRevitElement();
-                    elem.SetValue("Comments", prefix + "." + a.ToString());
+                    elem.SetValue("Comments", prefix + a.ToString());
                     a += 1;
                 }
                 catch (Autodesk.Revit.Exceptions.OperationCanceledException)
@@ -70,6 +70,7 @@ namespace Utility
             var setting = ModelData.Instance.Setting;
             var parameterString = setting.Parameter.Definition.Name;
             var prefix = setting.PreFix;
+            var settingCate = setting.Category.Id.IntegerValue;
             
             //var ettElem = new Model.Entity.Element();
             Func<Autodesk.Revit.DB.Element, bool> filterLine = x =>
@@ -81,7 +82,7 @@ namespace Utility
             Func<Autodesk.Revit.DB.Element, bool> filterCate = x =>
              {
                  var cate = x.Category.Id.IntegerValue;
-                 if (cate == setting.Category.Id.IntegerValue) return true;
+                 if (cate == settingCate) return true;
                  return false;
              };
             //var elemsRef = sel.PickObjects(Autodesk.Revit.UI.Selection.ObjectType.Element, new SelectionUtil(filter, null)).ToList();
@@ -109,7 +110,7 @@ namespace Utility
                 for (int i = 0; i < ettPilesSorted1.Count; i++)
                 {
                     index++;
-                    ettPilesSorted1[i].RevitElement.SetValue(parameterString, prefix + "." + index.ToString());
+                    ettPilesSorted1[i].RevitElement.SetValue(parameterString, prefix + index.ToString());
                 }
             }
             //foreach (var item in ettPiles)
