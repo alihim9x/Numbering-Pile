@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Model.Form"
-             mc:Ignorable="d" Width="283.221" Height="324.542">
+             mc:Ignorable="d" Width="283.221" Height="359.928">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
@@ -13,23 +13,23 @@
         <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="126,27,0,0" FontSize="15" Background="AliceBlue"
                   ItemsSource="{Binding SettingView.Categories}" DisplayMemberPath="Name"
                   SelectedItem="{Binding SettingView.Setting.Category}" Grid.ColumnSpan="2"/>
-        <Button Content="Select Path" HorizontalAlignment="Left" VerticalAlignment="Top" Width="118" Margin="126,243,0,0" FontSize="15" Background="AliceBlue" Click="SelectPathElement_Click" Grid.ColumnSpan="2" />
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="126,100,0,0" FontSize="15" Background="AliceBlue"
+        <Button Content="Select Path" HorizontalAlignment="Left" VerticalAlignment="Top" Width="118" Margin="126,275,0,0" FontSize="15" Background="AliceBlue" Click="SelectPathElement_Click" Grid.ColumnSpan="2" />
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="126,132,0,0" FontSize="15" Background="AliceBlue"
                  Text="{Binding SettingView.Setting.PreFix}" Grid.ColumnSpan="2"/>
         <Label Content="Category" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,25,0,0" FontSize="15" Grid.ColumnSpan="2" />
-        <Label Content="Group Of Pile" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,94,0,0" FontSize="15" Grid.ColumnSpan="2" />
-        <Label Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,129,0,0">
+        <Label Content="Group Of Pile" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,126,0,0" FontSize="15" Grid.ColumnSpan="2" />
+        <Label Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,161,0,0">
             <Label.Content>
                 <AccessText Text="Pile To Path(mm)" TextWrapping="Wrap" FontSize="15" Width="88">
 
                 </AccessText>
             </Label.Content>
         </Label>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="126,143,0,0" FontSize="15" Background="AliceBlue"
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="126,175,0,0" FontSize="15" Background="AliceBlue"
             Text="{Binding SettingView.Setting.DistanceFromPile2Path}" Grid.ColumnSpan="2"/>
 
-        <Label Content="Parameter" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,182,0,0" FontSize="15" Grid.ColumnSpan="2" />
-        <ComboBox Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="126,182,0,0"
+        <Label Content="Parameter" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,214,0,0" FontSize="15" Grid.ColumnSpan="2" />
+        <ComboBox Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="126,214,0,0"
                   FontSize="15" Background="AliceBlue"
                   ItemsSource="{Binding SettingView.Parameters}" DisplayMemberPath="Definition.Name"
                   SelectedItem="{Binding SettingView.Setting.Parameter}"/>
@@ -37,6 +37,9 @@
             ItemsSource="{Binding SettingView.VerOrHors}" 
             SelectedItem="{Binding SettingView.Setting.VerOrHor}" Grid.ColumnSpan="2"/>
         <Label Content="VerOrHor" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,61,0,0" FontSize="15" Grid.ColumnSpan="2" />
+        <Label Content="Star No." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,93,0,0" FontSize="15" Grid.ColumnSpan="2" />
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="126,100,0,0" FontSize="15" Background="AliceBlue"
+            Text="{Binding SettingView.Setting.StartNo}" Grid.ColumnSpan="2"/>
 
 
 

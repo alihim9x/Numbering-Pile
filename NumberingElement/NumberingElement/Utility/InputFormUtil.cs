@@ -70,6 +70,7 @@ namespace Utility
             var setting = ModelData.Instance.Setting;
             var parameterString = setting.Parameter.Definition.Name;
             var prefix = setting.PreFix;
+
             var settingCate = setting.Category.Id.IntegerValue;
             
             //var ettElem = new Model.Entity.Element();
@@ -101,7 +102,7 @@ namespace Utility
             //}
             //piles.ForEach(x => setting.EttElement.EttPiles.Add(new Model.Entity.Pile { RevitElement = x}));
             var ettElems = setting.EttElements;
-            int index = 0;
+            int index = setting.StartNo - 1;
             foreach (var item in ettElems)
             {
                 var ettPiles = item.EttPiles;                

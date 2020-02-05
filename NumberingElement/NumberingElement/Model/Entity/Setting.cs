@@ -39,6 +39,20 @@ namespace Model.Entity
                 OnPropertyChanged();
             }
         }
+        private int startNo;
+        public int StartNo
+        {
+            get
+            {
+                return startNo;
+            }
+            set
+            {
+                if (startNo == value) return;
+                startNo = value;
+                OnPropertyChanged();
+            }
+        }
         
         
         public Model.Entity.Element EttElement { get; set; }
