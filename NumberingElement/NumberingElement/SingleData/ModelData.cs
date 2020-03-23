@@ -234,10 +234,25 @@ namespace SingleData
         {
             get
             {
+                //var settingView = new Model.ViewModel.SettingView();
+                //var categorySet = settingView.Setting.Category;
+                //var setting = ModelData.Instance.Setting;
+                //var categorySet = setting.Category.Name;
                 if(parameters == null)
                 {
+                    //Autodesk.Revit.DB.FamilyInstance founOrFraming = null;
+                    //if (categorySet == Autodesk.Revit.DB.Category.GetCategory(revitData.Document, Autodesk.Revit.DB.BuiltInCategory.OST_StructuralFraming).Name)
+                    //{
+                    //    founOrFraming = revitData.Framings.FirstOrDefault();
+                    //}
+                    //else if (categorySet == Autodesk.Revit.DB.Category.GetCategory(revitData.Document, Autodesk.Revit.DB.BuiltInCategory.OST_StructuralFoundation).Name)
+                    //{
+                    //    founOrFraming = revitData.Foundations.FirstOrDefault();
+                    //}
                     var foun = revitData.Foundations.FirstOrDefault();
                     var paramset = foun.Parameters.GetEnumerator();
+                    //var paramset = founOrFraming.Parameters.GetEnumerator();
+
                     parameters = new List<Autodesk.Revit.DB.Parameter>();
                     while (paramset.MoveNext())
                     {

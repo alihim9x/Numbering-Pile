@@ -331,6 +331,18 @@ namespace SingleData
                 return framinginstancesinview;
             }
         }
+        private IEnumerable<FamilyInstance> framings;
+        public virtual IEnumerable<FamilyInstance> Framings
+        {
+            get
+            {
+                if(framings == null)
+                {
+                    framings = FamilyInstances.Where(x => x.Category.Id.IntegerValue == (int)BuiltInCategory.OST_StructuralFraming);
+                }
+                return framings;
+            }
+        }
         private IEnumerable<FamilyInstance> foundations;
         public virtual IEnumerable<FamilyInstance> Foundations
         {
